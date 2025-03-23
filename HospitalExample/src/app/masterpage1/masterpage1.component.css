@@ -1,0 +1,30 @@
+.nav-item {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .nav-item:hover {
+    color: blue;
+  }
+  
+  .active {
+    color: red; /* Highlight active page */
+  }
+  .sss {
+    background: linear-gradient(to right, #e9f90e, #ff4b2b);
+  }
+  
+  
+.back{
+    
+    color:red;
+    
+}
+.back1{
+    margin-top: 15px;
+    background-color: grey;
+    height: 60px;
+    text-align: center;
+}

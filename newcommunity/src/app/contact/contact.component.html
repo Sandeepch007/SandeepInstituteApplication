@@ -1,0 +1,42 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-5">
+            <form class="form" [formGroup]="revform" (ngSubmit)=" postreview()">
+                <h2 style="color: green;">CONTACT US</h2><br>
+                <div> 
+                Name:
+                <input type="text" placeholder="Write your name here.." class="form-control w-50" formControlName="name" id="name">
+                    <div *ngIf="revform.get('name')?.touched && revform.get('name')?.hasError('required')" class="text-danger">
+                        Name is required...
+                    </div>
+                </div>
+                <div>
+                    Email:
+                <input type="email" placeholder="Let us know how to contact you back.." class="form-control w-50" id="email" formControlName="email">
+                    <div *ngIf="revform.get('email')?.touched && revform.get('email')?.hasError('required')" class="text-danger">
+                        Email is required...
+                    </div>
+                </div>
+                <div>
+                Message:
+            <input type="text" placeholder="What would you like to tell us.." class="form-control w-50" id="message" formControlName="message">
+                    <div *ngIf="revform.get('message')?.touched && revform.get('message')?.hasError('required')" class="text-danger">
+                        Message is required...
+                    </div>
+                </div><br><br>
+                <button type="submit" class="btn btn-warning">Send Message</button><br>
+                <div>
+                  <span></span>9063352007
+                  <span></span> contactcompany.com
+                </div>
+              </form>
+
+        </div>
+
+        <div class="col-md-5">
+            <h1>Location</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d974594.7878951848!2d77.7485676229554!3d17.41126501488227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1737631774094!5m2!1sen!2sin" width="600" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+<hr>

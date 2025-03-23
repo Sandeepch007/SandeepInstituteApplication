@@ -1,0 +1,48 @@
+/* Background and Layout */
+.form-container {
+    background: url('https://tse4.mm.bing.net/th?id=OIP.tXvwOtNsr_mdvb30u1lizQHaEK&pid=Api&P=0&h=220') no-repeat center center/cover;
+    height: 100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-box {
+    background: rgba(255, 255, 255, 0.8); /* Transparent effect */
+    padding: 30px;
+    width: 900px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Styles */
+.form-control {
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #0056b3, #003d7a);
+    transform: scale(1.05);
+}

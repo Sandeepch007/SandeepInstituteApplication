@@ -1,0 +1,19 @@
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Admin Panel</h3>
+    <ul>
+      <li><a routerLink="/admin/dashboard">Dashboard</a> </li>
+      <li>  <a routerLink="/admin/users">Users</a></li>
+      <li><a routerLink="">Reports</a></li>
+      <li><button (click)="logout()">Logout</button></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <router-outlet></router-outlet> <!-- Admin Pages Will Load Here -->
+  </main>
+</div>
+
+

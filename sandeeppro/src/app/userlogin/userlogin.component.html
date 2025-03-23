@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="Offset-md-3 col-md-6">
+            <form [formGroup]="loginform" (ngSubmit)="onlogin()">
+                <h1>User Login</h1><br><br><br>
+                <div>
+                    <label for="username">User Name:</label>
+                    <input type="text" id="username" name="username" formControlName="username" class="form-control w-50">
+                    <div *ngIf="loginform.get('username')?.touched && loginform.get('username')?.hasError('required')">
+                        User Name is required......
+                    </div>
+                </div><br>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" formControlName="password" class="form-control w-50">
+                    <div *ngIf="loginform.get('password')?.touched && loginform.get('password')?.hasError('required')">
+                        password is required.....
+                    </div>
+                </div><br>
+                <span></span>
+
+                <button type="submit" class="btn btn-success" >Login</button><br>
+                <span>If your new user  ? please <a routerLink='login/register'>Register</a> here</span><br>
+                <a routerLink='login/forgotpwd'>Forgotpassword</a><br>
+            </form>
+        </div>
+    </div>
+</div>

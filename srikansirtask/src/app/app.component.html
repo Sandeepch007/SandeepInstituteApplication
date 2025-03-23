@@ -1,0 +1,104 @@
+<h1 style="margin-left: 200px;">Product form</h1><br><br>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="proform" (ngSubmit)="postproduct()">
+      <div>
+        <label for="categoryId"><span class="text-danger fs-4">*</span>Select an Category:</label>
+     <select id="categoryId" formControlName="categoryId" class="form-control" class="form-select" style="width:600px;">
+    <option value="">-- Select --</option>
+    <option *ngFor="let item of Categories" [value]="item.categoryId">
+      {{ item.categoryName }}
+    </option>
+  </select>
+      </div><br>
+      <div>
+        <label for="productName" ><span class="text-danger fs-4">*</span>Product Name:</label>
+        <input type="text" class="form-control w-50" formControlName="productName" id="productName">
+        <div *ngIf="proform.get('productName')?.touched && proform.get('productName')?.hasError('required')" class="text-danger">
+          Please enter Product Name..
+        </div>
+        <div *ngIf="proform.get('productName')?.touched && proform.get('productName')?.hasError('minlength')" class="text-danger">
+          please enter minimum 3 Characters.....
+        </div>
+        <div *ngIf="proform.get('productName')?.touched && proform.get('productName')?.hasError('maxlength')" class="text-danger">
+          please enter maximum 50 Characters.....
+        </div>  
+      </div><br>
+
+      <div>
+        <label for="productPrice" ><span class="text-danger fs-4">*</span>Product Price:</label>
+        <input type="text" class="form-control w-50" formControlName="productPrice" id="productPrice">
+        <div *ngIf="proform.get('productPrice')?.touched && proform.get('productPrice')?.hasError('required')" class="text-danger">
+          Please enter Product Price..
+        </div>
+        <div *ngIf="proform.get('productPrice')?.touched && proform.get('productPrice')?.hasError('minlength')" class="text-danger">
+          please enter minimum 2 Characters.....
+        </div>
+        <div *ngIf="proform.get('productPrice')?.touched && proform.get('productPrice')?.hasError('maxlength')" class="text-danger">
+          please enter maximum 10 Characters.....
+        </div>  
+      </div><br>
+
+      <div>
+        <label for="quantity" ><span class="text-danger fs-4">*</span>Product quantity:</label>
+        <input type="number" id="quantity" formControlName="quantity" class="form-control w-50" />
+        <div *ngIf="proform.get('quantity')?.touched && proform.get('quantity')?.hasError('required')" class="text-danger">
+          Please enter Product quantity..
+        </div>
+        <div *ngIf="proform.get('quantity')?.touched && proform.get('quantity')?.hasError('minlength')" class="text-danger">
+          please enter minimum 1 Characters.....
+        </div>
+        <div *ngIf="proform.get('quantity')?.touched && proform.get('quantity')?.hasError('maxlength')" class="text-danger">
+          please enter maximum 3 Characters.....
+        </div>  
+      </div><br>
+      <div>
+        <label for="totalPrice"><span class="text-danger fs-4">*</span>Total Price</label>
+        <input type="number" id="totalPrice" formControlName="totalPrice" class="form-control w-50"  readonly/>
+        <div *ngIf="proform.get('totalPrice')?.touched && proform.get('totalPrice')?.hasError('required')" class="text-danger">
+          Please enter Product Total Price..
+        </div>
+      </div>
+      <div>
+        <label for="productCode"><span class="text-danger fs-4">*</span>Product Code:</label>
+        <input type="text" class="form-control w-50" formControlName="productCode" id="productCode">
+        <div *ngIf="proform.get('productCode')?.touched && proform.get('productCode')?.hasError('required')" class="text-danger">
+          Please enter Product Code..
+        </div>
+      </div><br>
+<button class="btn btn-success m-5" >Save</button>
+<button class="btn btn-warning m-5">clear</button>
+    </form>
+  </div>
+</div><br><br>
+<h1 style="text-align: center;">Table of Products</h1>
+<marquee>Getting the grid view from products and category from webapi to angular</marquee>
+
+<br><br>
+<table class="table table-boarder">
+  <thead>
+    <tr>
+      <th>ProductId</th>
+      <th>product Name</th>
+      <th>ProductCode</th>
+      <th>Product Price</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>TotalPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr *ngFor="let item of pros">
+        <td>{{item.productId}}</td>
+        <td>{{item.productName}}</td>
+        <td>{{item.productCode}}</td>
+        <td>{{item.productPrice}}</td>
+        <td>{{item.category?.categoryName}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.totalPrice}}</td>
+
+      </tr>
+    
+  </tbody>
+</table>

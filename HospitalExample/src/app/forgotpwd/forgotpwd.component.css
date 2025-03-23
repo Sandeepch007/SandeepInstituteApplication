@@ -1,0 +1,27 @@
+/* Background Image with Transition */
+.forgot-password-container {
+    background: url('https://tse1.mm.bing.net/th?id=OIP.Y43J803qdZA4iE1xT-dVrAHaDQ&pid=Api&P=0&h=220') no-repeat center center/cover;
+    height: 100vh;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    background: rgba(239, 239, 239, 0.9);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Input Fields */
+.form-control {
+    border-radius: 5px;
+}
+
+/* Error Messages */
+.text-danger {
+    font-size: 0.9rem;
+}

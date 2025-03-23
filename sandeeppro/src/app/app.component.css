@@ -1,0 +1,16 @@
+.nav{
+    display: flex;
+    gap: 150px;
+    font-size: large;
+    background-color: #0c0cf1;
+    height: 50px;
+    align-items: center;
+    
+}
+.nav-link{
+    color: yellow;
+    
+}
+.nav-link:hover{
+    color:red;
+}

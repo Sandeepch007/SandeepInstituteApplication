@@ -1,0 +1,27 @@
+<table class="table table-border">
+    <thead>
+        <tr>
+        <th>user id</th>
+        <th>User name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>District Name</th>
+        <th>State Name</th>
+        <th>Country Name</th> 
+    </tr>    
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userlist">
+       
+            <td>{{user.userid}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phoneno}}</td>
+            <td>{{user.district.districtName}}</td>
+            <td>{{user.state.statename}}</td>
+            <td>{{user.country.countryname}}</td>
+        </tr>
+    
+    </tbody>
+   
+</table>

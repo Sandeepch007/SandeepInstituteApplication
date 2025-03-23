@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form [formGroup]="registerform" (ngSubmit)="postallusers()">
+                <h1>User Registration</h1><br>
+               
+                <div>
+                    <label for="username">User Name:</label>
+                    <input type="text" id="username" name="username" formControlName="username" class="form-control w-50" placeholder="Enter your username">
+                    <div *ngIf="registerform.get('username')?.touched && registerform.get('username')?.hasError('required')" class="text-danger">
+                        User Name is required.
+                    </div>
+                </div><br>
+               
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" formControlName="password" class="form-control w-50" placeholder="Enter your password">
+                    <div *ngIf="registerform.get('password')?.touched && registerform.get('password')?.hasError('required')" class="text-danger">
+                        Password is required.
+                    </div>
+                </div><br>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" formControlName="email" class="form-control w-50" placeholder="example@gmail.com">
+                    <div *ngIf="registerform.get('email')?.touched && registerform.get('email')?.hasError('required')" class="text-danger">
+                        Email is required.
+                    </div>
+                    <div *ngIf="registerform.get('email')?.touched && registerform.get('email')?.hasError('email')" class="text-danger">
+                        Please enter a valid email address.
+                    </div>
+                </div><br>
+                
+                <div>
+                    <label for="secquesid">Select a Security Question:</label>
+                    <select id="secquesid" class="form-select w-50" formControlName="secquesid">
+                        <option value="">Select a question</option>
+                        <option *ngFor="let ques of secques" [value]="ques.secquesid">
+                            {{ ques.secquesname }}
+                        </option>
+                    </select>
+                    <div *ngIf="registerform.get('secquesid')?.touched && registerform.get('secquesid')?.hasError('required')" class="text-danger">
+                        Security question is required.
+                    </div>
+                </div><br>
+              
+                <div>
+                    <label for="hint">Hint:</label>
+                    <input type="text" id="hint" name="hint" formControlName="hint" class="form-control w-50" placeholder="Enter a hint">
+                    <div *ngIf="registerform.get('hint')?.touched && registerform.get('hint')?.hasError('required')"class="text-danger">
+                        Hint is required.
+                    </div>
+                </div><br>
+              
+                <div>
+                    <label for="phoneno">Phone Number:</label>
+                    <input type="text" id="phoneno" name="phoneno" formControlName="phoneno" class="form-control w-50" placeholder="Enter your phone number">
+                    <div *ngIf="registerform.get('phoneno')?.touched && registerform.get('phoneno')?.hasError('required')" class="text-danger">
+                        Phone number is required.
+                    </div>
+                </div><br>
+                <div>
+                    <label for="districtid">Phone Number:</label>
+                    <input type="text" id="districtid" name="districtid" formControlName="districtid" class="form-control w-50" placeholder="Enter your District id">
+                    <div *ngIf="registerform.get('districtid')?.touched && registerform.get('districtid')?.hasError('required')" class="text-danger">
+                        District id is required.
+                    </div>
+                </div><br>
+              
+                <button type="submit" class="btn btn-success">Register</button><br>
+            </form>
+        </div>
+    </div>
+</div>

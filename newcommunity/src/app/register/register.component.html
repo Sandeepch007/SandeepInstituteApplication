@@ -1,0 +1,84 @@
+<h1 style="text-align: center;color:blue;">Registration Form</h1><br>
+<form [formGroup]="form" style="margin-left:450px;" (ngSubmit)="onsubmit()">
+    <div>
+        <label for="fullname">Enter your Fullname:</label>
+        <input id="fullname" type="text" class="form-control w-50" formControlName="fullname">
+        <div *ngIf="form.get('fullname')?.touched && form.get('fullname')?.hasError('required')" class="text-danger">
+            Full name is required....
+        </div>
+         <div *ngIf="form.get('fullname')?.touched && form.get('fullname')?.hasError('minlength')" class="text-danger">
+            Full name minimum length 3 characters...
+        </div> 
+        <div *ngIf="form.get('fullname')?.touched && form.get('fullname')?.hasError('maxlength')" class="text-danger">
+            Full name maximum length 9 characters...
+        </div> 
+    </div><br>
+
+    <div>
+        <label for="username">Enter your Username:</label>
+        <input id="username" type="text" class="form-control w-50" formControlName="username">
+        <div *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')" class="text-danger">
+            User name is required....
+        </div>
+         <div *ngIf="form.get('username')?.touched && form.get('username')?.hasError('minlength')" class="text-danger">
+            User name minimum length 3 characters...
+        </div> 
+        <div *ngIf="form.get('username')?.touched && form.get('username')?.hasError('maxlength')" class="text-danger">
+            User name maximum length 9 characters...
+        </div> 
+    </div><br>
+
+    <div>
+        <label for="password">Enter your Password:</label>
+        <input id="password" type="password" class="form-control w-50" formControlName="password">
+        <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')" class="text-danger">
+           Password is required....
+        </div>
+        <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('maxlength')" class="text-danger">
+           Password maximum length 9 characters...
+        </div>
+        <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('minlength')" class="text-danger">
+            Password minimum length 3 characters...
+         </div>
+    </div><br>
+
+    <div>
+        <label for="questionid">Select a Security Question:</label>
+        <select id="questionid" class="form-select"  style="width: 400px;" formControlName="questionid">
+          <option value="">Select a question</option>
+          <option *ngFor="let question of securityQuestions" [value]="question.questionid" class="text-dark">
+            {{ question.secquestion }}
+          </option>
+        </select>
+      </div>
+      <br>
+  <div>
+    <label for="secanswer">Enter your securityQuestion:</label>
+    <input id="secanswer" type="text" class="form-control w-50"  formControlName="secanswer">
+    <div *ngIf="form.get('secanswer')?.touched && form.get('secanswer')?.hasError('required')" class="text-danger">
+        security answer is required....
+    </div>
+    <div *ngIf="form.get('secanswer')?.touched && form.get('secanswer')?.hasError('minlength')" class="text-danger">
+        security answer minimum length 3 characters...
+    </div>
+    <div *ngIf="form.get('secanswer')?.touched && form.get('secanswer')?.hasError('maxlength')" class="text-danger">
+        security answer maximum length 9 characters...
+    </div> 
+</div><br>
+
+  <!-- <div>
+    <label for="usertype">Select User Type:</label>
+    <div>
+      <label>
+        <input type="radio" id="admin" value="Admin" formControlName="usertype" /> Admin
+      </label><br>
+      <label>
+        <input type="radio" id="user" value="User" formControlName="usertype" /> User
+      </label>
+    </div>
+  </div>
+  <br /> -->
+  <button type="submit" class=" btn btn-success mb-3" style="margin-left: 150px;">Insert</button>
+</form>
+
+ 

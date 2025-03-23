@@ -1,0 +1,95 @@
+<form [formGroup]="postquess" (ngSubmit)="insertreply()" >
+    <!-- <div>
+      <label for="questionId">Question ID:</label>
+      <span id="questionId" class="text-warning">{{ postquess.get('questionId')?.value }}</span>
+    </div> -->
+    <div>
+      <label for="question" >Question:</label>
+      <span id="question" class="text-warning">{{ postquess.get('question')?.value }}</span>
+    </div>
+    <div>
+      <label for="reply">Answer:</label>
+      <textarea id="reply" formControlName="reply" rows="4" cols="50" class="form-control w-50"></textarea>
+      <div *ngIf="postquess.get('reply')?.touched && postquess.get('reply')?.hasError('required')" class="text-danger">
+        Answer is required....
+    </div>
+    </div>
+    <input type="hidden" formControlName="questionId" />
+  <input type="hidden" formControlName="loginId" />
+    <div>
+      <button type="submit" class="btn btn-success m-2">Submit</button>
+    </div>
+  </form>
+
+  <br><br>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+          
+            <table class="table table-boarder">
+             <thead>
+                <tr>
+                    <th>Replyid</th>
+                    <th>Question</th>
+                    <!-- <th>Question id</th>
+                    <th>Login Id</th> -->
+                    <th>Reply</th>
+                    <!-- <th>UserName</th> -->
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr *ngFor="let form of lstreply">
+                    <td>{{form.replyId}}</td>
+                    <td>{{form.forum?.question}}</td>
+                    <!-- <td>{{form.forum?.questionId}}</td>
+                    <td>{{form.forum?.loginId}}</td> -->
+                    <td>{{form.reply}}</td>
+                    <!-- <td>{{form.forum?.login?.username}}</td> -->
+                    <td><button class="btn btn-warning" (click)="editData(form.replyId)">Edit</button></td>
+                    <td><button class="btn btn-danger" (click)="deletereply(form.replyId)" >Delete</button></td>
+                    
+                </tr>
+             </tbody>
+            </table>
+        </div>
+    </div>
+</div><br><br><br>
+
+    <div *ngIf="showPopupModal" class="popup-modal">
+      <div class="modal-content">
+        <h3 *ngIf="isEditMode">Edit Reply</h3>
+        <form [formGroup]="editForm" (ngSubmit)="updateReply()">
+          <input type="hidden" formControlName="replyId" />
+          <div >
+            <label for="questionId">Question ID:</label>
+            <input type="text" class="form-control" formControlName="questionId" id="questionId" name="questionId" [readonly]="true">
+          </div>
+          <div >
+            <label for="loginId">Login ID:</label>
+            <input type="text" class="form-control" formControlName="loginId" id="loginId" name="loginId" [readonly]="true">
+            
+          </div>
+    
+          <div>
+            <label for="reply">Reply:</label>
+            <textarea
+              id="reply"
+              formControlName="reply"
+              rows="4"
+              cols="50"
+              class="form-control"
+            ></textarea>
+          </div>
+    
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-secondary" (click)="closePopup()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  

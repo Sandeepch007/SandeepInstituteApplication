@@ -1,0 +1,126 @@
+<h1 style="text-align: center; color: blue;">Customer Registration Form</h1><br>
+<form [formGroup]="form" style="margin-left: 450px;" (ngSubmit)="onsubmit()">
+    <div *ngIf="isEditMode">
+    <label for="customerId">Customer ID:</label>
+  <input type="text" id="customerId" formControlName="customerId" class="form-control w-50" readonly/>
+</div>
+    <div>
+        <label for="firstName">Enter your First Name:</label>
+        <input id="firstName" type="text" class="form-control w-50" formControlName="firstName">
+        <div *ngIf="form.get('firstName')?.touched && form.get('firstName')?.hasError('required')" class="text-danger">
+            First name is required.
+        </div>
+        
+    </div><br>
+
+    <div>
+        <label for="middleName">Enter your Middle Name:</label>
+        <input id="middleName" type="text" class="form-control w-50" formControlName="middleName">
+        <div *ngIf="form.get('middleName')?.touched && form.get('middleName')?.hasError('required')" class="text-danger">
+            Middle name is required.
+        </div>
+    </div><br>
+
+    <div>
+        <label for="lastName">Enter your Last Name:</label>
+        <input id="lastName" type="text" class="form-control w-50" formControlName="lastName">
+        <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')" class="text-danger">
+            Last name is required.
+        </div>
+    </div><br>
+
+    <div>
+        <label for="dateOfBirth">Enter your Date of Birth:</label>
+        <input id="dateOfBirth" type="date" class="form-control w-50" formControlName="dateOfBirth">
+        <div *ngIf="form.get('dateOfBirth')?.touched && form.get('dateOfBirth')?.hasError('required')" class="text-danger">
+            Date of Birth is required.
+        </div>
+    </div><br>
+
+    <div>
+        <label>Select Gender:</label>
+        <div>
+            <label>
+                <input type="radio" value="Male" formControlName="gender" /> Male
+            </label><br>
+            <label>
+                <input type="radio" value="Female" formControlName="gender" /> Female
+            </label>
+        </div>
+    </div><br>
+
+    <div>
+        <label for="city">Select a City Name:</label>
+        <select id="city" class="form-select w-50" formControlName="city">
+            <option value="">Select a City</option>
+            <option *ngFor="let city of citys" [value]="city.city" class="text-dark">
+                {{ city.city }}
+            </option>
+        </select>
+    </div><br>
+
+    <div>
+        <label for="phone">Enter your Phone Number:</label>
+        <input id="phone" type="text" class="form-control w-50" formControlName="phone">
+        <div *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')" class="text-danger">
+            Phone number is required.
+        </div>
+        <div *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('pattern')" class="text-danger">
+            Phone number is invalid.
+        </div>
+    </div><br>
+
+    <div>
+        <label for="email">Enter your Email Id:</label>
+        <input id="email" type="text" class="form-control w-50" formControlName="email">
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')" class="text-danger">
+            Email is required.
+        </div>
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="text-danger">
+            Invalid email format.
+        </div>
+    </div><br>
+
+    <button type="submit" class="btn btn-success mb-3" style="margin-left: 150px;">
+        {{ isEditMode ? 'Update' : 'Insert' }}
+    </button>
+</form>
+
+
+<br><br>
+<div class="container-fluid"> 
+    <div class="row"> 
+        <div class="offset-md-2 col-md-8">
+            <table class="table table-boarder"> 
+             <thead> 
+                <tr> 
+                    <th>Customerid</th> 
+                    <th>CustomerFname</th> 
+                    <th>CustomerMiddleName</th>
+                    <th>CustomerLastName</th>
+                    <th>Gender</th> 
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th></th> 
+                    <th></th> 
+                </tr> 
+             </thead> 
+             <tbody> 
+                <tr *ngFor="let lst of lstcustomers">
+                    <td>{{lst.customerId}}</td> 
+                    <td>{{lst.firstName}}</td> 
+                    <td>{{lst.middleName}}</td> 
+                    <td>{{lst.lastName}}</td> 
+                    <td>{{lst.gender}}</td>
+                    <td>{{lst.city}}</td>
+                    <td>{{lst.phone}}</td>
+                    <td>{{lst.email}}</td>
+                    <td><button class="btn btn-warning"(click)="editData(lst.customerId)" >Edit</button></td> 
+                    <td><button class="btn btn-danger" (click)="delete(lst.customerId)">Delete</button></td> 
+                </tr> 
+             </tbody> 
+            </table> 
+        </div> 
+    </div> 
+</div><br><br> 

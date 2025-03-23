@@ -1,0 +1,106 @@
+<div  style="position: absolute;right: 20px;; top: 100px;">
+    <!-- Post Query Button -->
+  <button class="btn btn-success" style="width: 100px;" (click)="showPopup()">PostArticle</button>
+</div>
+
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-md-2 col-md-8">
+      <!-- Search Bar -->
+      <div class="mb-3">
+        <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Search by ArticleType or Description" />
+        <button class="btn btn-primary mt-2" (click)="onSearch()">Search</button>
+        <button class="btn btn-secondary mt-2" (click)="clearSearch()">Clear</button>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Article Id</th>
+            <th>Article Type</th>
+            <th>Article Description</th>
+            <th>Article Date</th>
+            <th>Username</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Check if there are articles to display -->
+          <tr *ngIf="filteredArticles.length === 0">
+            <td colspan="7" class="text-center">No articles found.</td>
+          </tr>
+
+          <!-- Display filtered articles -->
+          <tr *ngFor="let form of filteredArticles">
+            <td>{{ form.articleId }}</td>
+            <td>{{ form.articleType }}</td>
+            <td>{{ form.articleDescripstion }}</td>
+            <td>{{ form.currentDate | date: 'dd-MMM-yyyy' }}</td>
+            <td>{{ form.login?.username }}</td>
+            <td><button class="btn btn-warning" (click)="editData(form.articleId)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deletearticle(form.articleId)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  
+
+
+
+
+  
+
+
+
+
+
+<br><br><br><br>
+<div *ngIf="showPopupModal" class="popup-overlay">
+  <div class="popup-content">
+    <h3>Add Post Query</h3>
+
+    <!-- Form inside the popup -->
+    <form [formGroup]="artinsert" (ngSubmit)="onsubmit()">
+
+      <div *ngIf="isEditMode">
+        <label for="articleId">Article ID:</label>
+        <input type="text" class="form-control" formControlName="articleId" id="articleId" name="articleId" [readonly]="true">
+      </div>
+  
+      <div>
+        <label for="articleType">Article Type:</label>
+        <input type="text" class="form-control" formControlName="articleType" id="articleType" name="articleType">
+        <div *ngIf="artinsert.get('articleType')?.touched && artinsert.get('articleType')?.hasError('required')" class="text-danger">
+          articleType is required...
+        </div>
+      </div>
+  
+      <div >
+        <label for="articleDescripstion">Article Discription:</label>
+        <input type="text" class="form-control" formControlName="articleDescripstion" id="articleDescripstion" name="articleDescripstion" >
+        <div *ngIf="artinsert.get('articleDescripstion')?.touched && artinsert.get('articleDescripstion')?.hasError('required')" class="text-danger">
+          Article Description is required...
+        </div>
+      </div>
+      <div *ngIf="isEditMode">
+        <label for="loginId">Login ID:</label>
+        <input type="text" class="form-control" formControlName="loginId" id="loginId" name="loginId" [readonly]="true">
+        
+      </div>
+  
+      <div class="mt-3">
+        <!-- Submit button changes text based on edit mode -->
+        <button type="submit" class="btn m-2" [ngClass]="isEditMode ? 'btn-warning' : 'btn-primary'">
+          {{ isEditMode ? 'Update' : 'Insert' }}
+        </button>
+      
+        <!-- Cancel button -->
+        <button type="button" class="btn btn-secondary" (click)="closePopup()">Cancel</button>
+      </div>
+    </form>
+  </div>

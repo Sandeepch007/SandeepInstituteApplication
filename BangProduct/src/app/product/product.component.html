@@ -1,0 +1,94 @@
+<h1 style="text-align: center; color: blue;">Customer Registration Form</h1><br>
+<form [formGroup]="form" style="margin-left: 450px;" (ngSubmit)="onsubmit()">
+    <div *ngIf="isEditMode">
+    <label for="productId">Customer ID:</label>
+  <input type="text" id="productId" formControlName="productId" class="form-control w-50" readonly/>
+</div>
+    <div>
+        <label for="productName">Enter your Product Name:</label>
+        <input id="productName" type="text" class="form-control w-50" formControlName="productName">
+        <div *ngIf="form.get('productName')?.touched && form.get('productName')?.hasError('required')" class="text-danger">
+            Product name is required.
+        </div>
+        <div *ngIf="form.get('productName')?.touched && form.get('productName')?.hasError('maxlength')" class="text-danger">
+            Product maximum length is 100.
+        </div>
+        
+    </div><br>
+
+    <div>
+        <label for="proDescription">Enter your Product Description:</label>
+        <input id="proDescription" type="text" class="form-control w-50" formControlName="proDescription">
+        <div *ngIf="form.get('proDescription')?.touched && form.get('proDescription')?.hasError('required')" class="text-danger">
+            Product Description is required.
+        </div>
+        <div *ngIf="form.get('proDescription')?.touched && form.get('proDescription')?.hasError('maxlength')" class="text-danger">
+            Product Description maximumlength is 500.
+        </div>
+    </div><br>
+
+    <div>
+        <label for="price">Enter your product price:</label>
+        <input id="price" type="text" class="form-control w-50" formControlName="price">
+        <div *ngIf="form.get('price')?.touched && form.get('price')?.hasError('required')" class="text-danger">
+            Price is required.
+        </div>
+        <div *ngIf="form.get('price')?.touched && form.get('price')?.hasError('min')" class="text-danger">
+            Price must not be zero and starts from 1.
+        </div>
+    </div><br>
+
+    <div>
+        <label for="quantity">Enter your product Quality:</label>
+        <input id="quantity" type="text" class="form-control w-50" formControlName="quantity">
+        <div *ngIf="form.get('quantity')?.touched && form.get('quantity')?.hasError('required')" class="text-danger">
+            Quantity is required.
+        </div>
+        <div *ngIf="form.get('quantity')?.touched && form.get('quantity')?.hasError('min')" class="text-danger">
+            Quantity must not be zero and starts from 1.
+        </div>
+    </div><br>
+
+   
+
+    <button type="submit" class="btn btn-success mb-3" style="margin-left: 150px;">
+        {{ isEditMode ? 'Update' : 'Insert' }}
+    </button>
+</form>
+
+
+<br><br>
+<div class="container-fluid"> 
+    <div class="row"> 
+        <div class="offset-md-2 col-md-8">
+            <table class="table table-boarder"> 
+             <thead> 
+                <tr> 
+                    <th>productId</th> 
+                    <th>Product Name</th> 
+                    <th>Product Description</th>
+                    <th>price</th>
+                    <th>Quantity</th>
+                    <th>Inserting Date</th>
+                    <th>Upating Date</th>     
+                    <th></th> 
+                    <th></th> 
+                </tr> 
+             </thead> 
+             <tbody> 
+                <tr *ngFor="let lst of lstproducts">
+                    <td>{{lst.productId}}</td> 
+                    <td>{{lst.productName}}</td> 
+                    <td>{{lst.proDescription}}</td> 
+                    <td>{{lst.price}}</td> 
+                    <td>{{lst.quantity}}</td>
+                    <td>{{ lst.createdAt | date:'dd MMM yyyy' }}</td>
+                    <td>{{ lst.updated | date:'dd MMM yyyy' }}</td>
+                    <td><button class="btn btn-warning"(click)="editData(lst.productId)" >Edit</button></td> 
+                    <td><button class="btn btn-danger" (click)="delete(lst.productId)">Delete</button></td> 
+                </tr> 
+             </tbody> 
+            </table> 
+        </div> 
+    </div> 
+</div><br><br> 

@@ -1,0 +1,34 @@
+<div class="forex-data">
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Bid</th>
+        <th>Ask</th>
+        <th>Change</th>
+        <th>% Change</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Volume</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of forexData">
+        <td>{{ data.symbol }}</td>
+        <td>{{ data.bid.toFixed(5) }}</td>
+        <td>{{ data.ask.toFixed(5) }}</td>
+        <td [ngClass]="{'positive': data.change > 0, 'negative': data.change < 0}">
+          {{ data.change.toFixed(4) }}
+        </td>
+        <td [ngClass]="{'positive': data.percentChange > 0, 'negative': data.percentChange < 0}">
+          {{ data.percentChange.toFixed(2) }}%
+        </td>
+        <td>{{ data.high.toFixed(5) }}</td>
+        <td>{{ data.low.toFixed(5) }}</td>
+        <td>{{ data.volume.toFixed(2) }}</td>
+        <td>{{ data.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

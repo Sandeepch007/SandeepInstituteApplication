@@ -1,0 +1,52 @@
+<div class="container-fluid forgot-password-container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-lg">
+                <h2 class="text-center">Forgot Password</h2>
+                <form [formGroup]="forgotPasswordForm" >
+                    <!-- Email Field -->
+                    <div class="form-group mb-3">
+                        <label for="email">Enter Your Email:</label>
+                        <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter email">
+                        <div *ngIf="forgotPasswordForm.get('email')?.touched && forgotPasswordForm.get('email')?.hasError('required')" class="text-danger">
+                            Email is required.
+                        </div>
+                        <div *ngIf="forgotPasswordForm.get('email')?.touched && forgotPasswordForm.get('email')?.hasError('email')" class="text-danger">
+                            Enter a valid email.
+                        </div>
+                    </div>
+
+                    <!-- Security Question Selection -->
+                    <div class="form-group mb-3">
+                        <label for="securityQuestion">Select a Security Question:</label>
+                        <select class="form-control" formControlName="securityQuestion">
+                            <option value="">-- Select a Question --</option>
+                            <option value="pet">What is your pet's name?</option>
+                            <option value="motherMaiden">What is your mother's maiden name?</option>
+                            <option value="birthCity">In which city were you born?</option>
+                            <option value="firstSchool">What is the name of your first school?</option>
+                            <option value="favoriteFood">What is your favorite food?</option>
+                        </select>
+                        <div *ngIf="forgotPasswordForm.get('securityQuestion')?.touched && forgotPasswordForm.get('securityQuestion')?.hasError('required')" class="text-danger">
+                            Security question is required.
+                        </div>
+                    </div>
+
+                    <!-- Security Answer -->
+                    <div class="form-group mb-3">
+                        <label for="securityAnswer">Enter Your Answer:</label>
+                        <input type="text" id="securityAnswer" class="form-control" formControlName="securityAnswer" placeholder="Enter answer">
+                        <div *ngIf="forgotPasswordForm.get('securityAnswer')?.touched && forgotPasswordForm.get('securityAnswer')?.hasError('required')" class="text-danger">
+                            Answer is required.
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="forgotPasswordForm.invalid">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div style="background-color: rgb(58, 59, 59); height: 100vh;">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+  <div class="container-fluid">
+   
+    <h1 class="three-d-text" style="margin-left: 30px;">AB</h1>
+<h1 style="color: rgb(128, 182, 10);font-size:xx-large;font-weight: bold;margin-left: 8px;">First</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown " style="margin-left: 30px;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
+            Product
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action 1</a></li>
+            <li><a class="dropdown-item" href="#">Action 2</a></li>
+            <li><a class="dropdown-item" href="#">Action 3</a></li>
+          </ul>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Angular</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Angular Grid</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<div class="row">
+    <div class="col-12">
+  <ag-grid-angular *ngIf="isBrowser" 
+    style="width: 100%; height: 500px;" 
+    class="ag-theme-alpine ag"
+    [rowData]="tables"
+    [columnDefs]="coldefs"
+    [defaultColDef]="{ resizable: true, sortable: true, filter: true }"
+    rowSelection="single"
+    [defaultColDef]="defaultColDef"
+        [cellSelection]="cellSelection"
+        [enableCharts]="enableCharts"
+        #agGrid  
+        [suppressAggFuncInHeader]="suppressAggFuncInHeader"
+  [groupDefaultExpanded]="groupDefaultExpanded"
+  [animateRows]="true"
+  >
+  </ag-grid-angular>
+  </div>
+  </div>
+<footer>
+    <marquee>
+      <h1 style="color:orange ;"> Thank you for Visiting The Application  </h1>
+    </marquee>
+  </footer>
+</div>

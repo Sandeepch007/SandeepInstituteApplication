@@ -1,0 +1,35 @@
+<h1 style="text-align: center;background-color: orange;color: darkblue;">About Applications.....</h1>
+<div class="=container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <img src="assets/img3.png" width="450px" height="250px">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div>
+                <img src="assets/img1.jpg" width="450px" height="250px">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div>
+                <img src="assets/img4.jpg" width="450px" height="250px">
+            </div>
+        </div>
+        
+    </div>
+</div><br>
+<hr>
+<marquee><h2>This is the Reviews </h2></marquee>
+<table>
+    <tbody>
+        <tr *ngFor="let rev of reviews.slice().reverse()">
+       <th>Name :---</th>
+       <td>{{rev.name}}</td>
+       <th>Review :---</th>
+       <td>{{rev.message}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <div class="offset-md-2 col-md-5">
+        <div class="row">
+            <form [formGroup]="form">
+                <h1>Regestration Form of Employee</h1>
+                <div *ngIf="isEditmode">
+                    <label for="empno">Enter Emplyee Number:</label>
+                    <input type="number" formControlName="empno" id="empno" class="form-control w-50">
+                </div><br>
+                <div>
+                    <label for="empName">Enter Employee name:</label>
+                    <input type="text" formControlName="empName" class="form-control w-50">
+                    <div *ngIf="form.get('empName')?.touched && form.get('empName')?.hasError('required')" class="text-danger">
+                     Employee Name is Required.....
+                    </div>
+                    <div *ngIf="form.get('empName')?.touched && form.get('empName')?.hasError('minlength')" class="text-danger" >
+                        Employee Name Require min 3 Characters....
+                    </div>
+                    <div *ngIf="form.get('empName')?.touched && form.get('empName')?.hasError('pattern')" class="text-danger">
+                        Employee Name is in only Characters....
+                    </div>
+                </div><br>
+                <div>
+                    <label for="empSalary">Enter Employee Salary:</label>
+                    <input type="text" formControlName="empSalary" class="form-control w-50">
+                    <div *ngIf="form.get('empSalary')?.touched && form.get('empSalary')?.hasError('required')" class="text-danger">
+                     Employee Salary is Required.....
+                    </div>
+                    <div *ngIf="form.get('empSalary')?.touched && form.get('empSalary')?.hasError('pattern')" class="text-danger">
+                        Employee salary enter in only digits....
+                    </div>
+                </div><br>
+                <div>
+                    <label for="empDate">Enter Employee Joining Date:</label>
+                    <input type="date" formControlName="empDate" class="form-control w-50">
+                    <div *ngIf="form.get('empDate')?.touched && form.get('empDate')?.hasError('required')" class="text-danger">
+                     Employee Date of Joined is Required.....
+                    </div>
+                </div><br>
+
+                <div>
+                    <label for="empDob">Enter Employee Date of Birth:</label>
+                    <input type="date" formControlName="empDob" class="form-control w-50">
+                    <div *ngIf="form.get('empDob')?.touched && form.get('empDob')?.hasError('required')" class="text-danger">
+                     Employee Date of Birth is Required.....
+                    </div>
+                </div><br>
+
+                <div>
+                    <label for="empAadharNo">Enter Employee Aadhar No:</label>
+                    <input type="text" formControlName="empAadharNo" class="form-control w-50">
+                    <div *ngIf="form.get('empAadharNo')?.touched && form.get('empAadharNo')?.hasError('required')" class="text-danger">
+                     Employee AadharNo is Required.....
+                    </div>
+                    <div *ngIf="form.get('empAadharNo')?.touched && form.get('empAadharNo')?.hasError('pattern')" class="text-danger">
+                        Employee Aadhar number is invalid....
+                    </div>
+                </div><br>
+                <div>
+                    <label for="empLocation">Enter Employee Location:</label>
+                    <input type="text" formControlName="empLocation" class="form-control w-50">
+                    <div *ngIf="form.get('empLocation')?.touched && form.get('empLocation')?.hasError('required')" class="text-danger">
+                     Employee Location is Required.....
+                    </div>
+                </div><br>
+                <div>
+                    <label for="empPincode">Enter Employee Pincode:</label>
+                    <input type="text" formControlName="empPincode" class="form-control w-50">
+                    <div *ngIf="form.get('empPincode')?.touched && form.get('empPincode')?.hasError('required')" class="text-danger">
+                     Employee Pincode is Required.....
+                    </div>
+                    <div *ngIf="form.get('empPincode')?.touched && form.get('empPincode')?.hasError('pattern')" class="text-danger">
+                        Employee Pincode  is invalid  .....
+                    </div>
+                </div><br>
+                <div>
+                    <label for="empEmailId">Enter Employee EmailId:</label>
+                    <input type="text" formControlName="empEmailId" class="form-control w-50">
+                    <div *ngIf="form.get('empEmailId')?.touched && form.get('empEmailId')?.hasError('required')" class="text-danger">
+                     Employee EmailId is Required.....
+                    </div>
+                    <div *ngIf="form.get('empEmailId')?.touched && form.get('empEmailId')?.hasError('email')" class="text-danger">
+                        Employee Email is in  invalid format .....
+                    </div>
+                </div><br>
+
+                <div>
+                    <label for="empPassportNo">Enter Employee PassportNo:</label>
+                    <input type="text" formControlName="empEmailId" class="form-control w-50">
+                    <div *ngIf="form.get('empPassportNo')?.touched && form.get('empPassportNo')?.hasError('required')" class="text-danger">
+                     Employee PassportNo is Required.....
+                    </div>
+                    <div *ngIf="form.get('empPassportNo')?.touched && form.get('empPassportNo')?.hasError('pattern')" class="text-danger">
+                        Employee PassportNo is in  invalid format use (eg:A1234567).....
+                    </div>
+                </div><br>
+
+                <div>
+                    <label for="empGender">Enter Employee Gender:</label>
+                    <input type="radio" formControlName="empGender" class="form-control w-50" value="Male">Male
+                    <input type="radio" formControlName="empGender" class="form-control w-50" value="FeMale">FeMale
+                    <div *ngIf="form.get('empGender')?.touched && form.get('empGender')?.hasError('required')" class="text-danger">
+                     Employee Gender is Required.....
+                    </div>                  
+                </div><br>
+
+                <div>
+                    
+                        <label for="deptId">Select Department:</label>
+                        <select formControlName="DeptId" id="deptId" class="form-control w-50" class="form-select">
+                          <option value="">-- Select Department --</option>
+                          <option *ngFor="let dept of departments" value="dept.DeptId">
+                            {{ dept.deptName }}
+                          </option>
+                        </select>               
+                </div><br>
+                <button class="btn btn-success mb-3"  type="submit">{{isEditmode ? 'Update':'insert'}}</button>
+            </form>
+        </div>
+    </div>
+</div>

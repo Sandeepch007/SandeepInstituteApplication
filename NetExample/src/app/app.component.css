@@ -1,0 +1,26 @@
+.green-cell {
+  color: green;
+  font-weight: bold;
+}
+
+.red-cell {
+  color: red;
+  font-weight: bold;
+}
+.ag-theme-alpine{
+  width: 100vw;
+  height: 100vh;
+}
+.icon-container {
+  display: flex;
+  gap: 8px; /* Adjust spacing between icons */
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px; /* Adjust icon size if needed */
+  color: #1976d2; /* Set your preferred color */
+}
+
+
+

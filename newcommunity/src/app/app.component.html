@@ -1,0 +1,9 @@
+<ng-container *ngIf="username !== null || username !== ''; else loggedIn">
+    <app-masterpage></app-masterpage>
+  </ng-container>
+  <ng-template #loggedIn>
+    <app-masterpage2></app-masterpage2>
+  </ng-template>
+  
+
+  

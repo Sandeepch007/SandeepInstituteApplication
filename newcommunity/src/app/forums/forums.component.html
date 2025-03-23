@@ -1,0 +1,85 @@
+
+<!-- <div>
+    <a routerLink="postques" style="position: absolute;right: 20px;; top: 60px;">postquery</a>
+</div> --><!-- Main Container -->
+<div  style="position: absolute;right: 20px;; top: 100px;">
+          <!-- Post Query Button -->
+        <button class="btn btn-success" style="width: 100px;" (click)="showPopup()">PostQuery</button>
+  </div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+          
+            <table class="table table-boarder">
+             <thead>
+                <tr>
+                    <th>Questionid</th>
+                    <th>Question</th>
+                    <th>UserName</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr *ngFor="let form of lstforums">
+                    <td>{{form.questionId}}</td>
+                    <td>{{form.question}}</td>
+                    <td>{{form.login?.username}}</td>
+                    <td><button class="btn btn-warning" (click)="editData(form.questionId)">Edit</button></td>
+                    <td><button class="btn btn-danger" (click)="deleteForum(form.questionId)">Delete</button></td>
+                    <td><button class="btn btn-primary" (click)="onselect(form.questionId)">Select</button></td>
+                </tr>
+             </tbody>
+            </table>
+        </div>
+    </div>
+</div><br><br>
+
+  
+  <!-- Popup Modal (Visible when showPopupModal is true) -->
+  <div *ngIf="showPopupModal" class="popup-overlay">
+    <div class="popup-content">
+      <h3>Add Post Query</h3>
+  
+      <!-- Form inside the popup -->
+      <form [formGroup]="postques" (ngSubmit)="onsubmit()">
+        <div *ngIf="isEditMode">
+          <label for="questionId">Question ID:</label>
+          <input type="text" class="form-control" formControlName="questionId" id="questionId" name="questionId" [readonly]="true">
+        </div>
+    
+        <div>
+          <label for="question">Question:</label>
+          <input type="text" class="form-control" formControlName="question" id="question" name="question">
+          <div *ngIf="postques.get('question')?.touched && postques.get('question')?.hasError('required')" class="text-danger">
+            Question is required...
+          </div>
+        </div>
+    
+        <div *ngIf="isEditMode">
+          <label for="loginId">Login ID:</label>
+          <input type="text" class="form-control" formControlName="loginId" id="loginId" name="loginId" [readonly]="true">
+          <div *ngIf="postques.get('loginId')?.touched && postques.get('loginId')?.hasError('required')" class="text-danger">
+            Login ID is required...
+          </div>
+        </div>
+    
+        <div class="mt-3">
+          <!-- Submit button changes text based on edit mode -->
+          <button type="submit" class="btn m-2" [ngClass]="isEditMode ? 'btn-warning' : 'btn-primary'">
+            {{ isEditMode ? 'Update' : 'Insert' }}
+          </button>
+        
+          <!-- Cancel button -->
+          <button type="button" class="btn btn-secondary" (click)="closePopup()">Cancel</button>
+        </div>
+      </form>
+    </div>
+ 
+ 
+  
+  <!-- Popup Overlay Styling -->
+  

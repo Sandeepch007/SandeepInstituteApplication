@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row" style="margin-left:450px;">
+<form [formGroup]="userlogin"  (ngSubmit)="onlogin()">
+    <h1>User Login Form</h1>
+    <br><br>
+  
+   
+    <div>
+      <label for="username">Username:</label>
+      <input 
+        id="username" 
+        type="text" 
+        name="username" 
+        formControlName="username" 
+        class="form-control w-50"
+      />
+      <div 
+        *ngIf="userlogin.get('username')?.touched && userlogin.get('username')?.hasError('required')" 
+        class="text-danger">
+        Username is required.
+      </div>
+      <div 
+        *ngIf="userlogin.get('username')?.touched && userlogin.get('username')?.hasError('minlength')" 
+        class="text-danger">
+        Username must be at least 5 characters.
+      </div>
+      <div 
+        *ngIf="userlogin.get('username')?.touched && userlogin.get('username')?.hasError('maxlength')" 
+        class="text-danger">
+        Username must not exceed 8 characters.
+      </div>
+    </div>
+    <br><br>
+  
+   
+    <div>
+      <label for="password">Password:</label>
+      <input 
+        id="password" 
+        type="password" 
+        name="password" 
+        formControlName="password" 
+        class="form-control w-50"
+      />
+      <div 
+        *ngIf="userlogin.get('password')?.touched && userlogin.get('password')?.hasError('required')" 
+        class="text-danger">
+        Password is required.
+      </div>
+      <div 
+        *ngIf="userlogin.get('password')?.touched && userlogin.get('password')?.hasError('minlength')" 
+        class="text-danger">
+        Password must be at least 3 characters.
+      </div>
+      <div 
+        *ngIf="userlogin.get('password')?.touched && userlogin.get('password')?.hasError('maxlength')" 
+        class="text-danger">
+        Username must not exceed 9 characters.
+      </div>
+    </div>
+    <br>
+  
+    <!-- Forgot Password -->
+    <a routerLink="frgtpwd">Forgot Password?</a>
+    <br><br>
+  
+    <!-- Login Button -->
+    <button 
+      type="submit" 
+      
+      class="btn btn-success">
+      Login
+    </button><br>
+    <div>
+        Don't have an account? 
+        <a routerLink="register">Sign up</a>
+      </div>
+      
+  </form>
+
+ 
+
+
+</div>
+</div>
+  

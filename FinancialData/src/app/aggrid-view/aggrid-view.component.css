@@ -1,0 +1,18 @@
+.ag{
+    --ag-background-color: #1e1e1e;  /* Dark Background */
+    --ag-foreground-color: #848884;  /* White Text */
+    --ag-header-background-color: #333333; /* Darker Header */
+    --ag-row-hover-color: #171704; /* Hover Effect */
+  }
+
+  
+
+
+  
+  .three-d-text {
+    font-size: 4rem;
+    font-weight: bold;
+    color: red;
+    text-shadow: 5px 5px 0 black, 10px 10px 0 darkred;
+  }
+  

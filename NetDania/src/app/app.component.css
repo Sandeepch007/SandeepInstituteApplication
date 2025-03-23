@@ -1,0 +1,23 @@
+.forex-data table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.forex-data th, .forex-data td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.forex-data th {
+  background-color: #333;
+  color: white;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}

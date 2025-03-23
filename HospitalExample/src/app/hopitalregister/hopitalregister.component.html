@@ -1,0 +1,196 @@
+<div class="container-fluid form-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-box">
+                <h1 class="text-center">Registration Form</h1>
+                <form [formGroup]="form" (ngSubmit)="previewDataFunc()">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">Enter Your First Name:</label>
+                                <input type="text" id="firstname" class="form-control" formControlName="firstname">
+                                <div *ngIf="form.get('firstname')?.touched && form.get('firstname')?.hasError('required')" class="text-danger">
+                                    First Name is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middlename">Enter Your Middle Name:</label>
+                                <input type="text" id="middlename" class="form-control" formControlName="middlename">
+                                <div *ngIf="form.get('middlename')?.touched && form.get('middlename')?.hasError('required')" class="text-danger">
+                                    Middle Name is required.
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastname">Enter Your Last Name:</label>
+                                <input type="text" id="lastname" class="form-control" formControlName="lastname">
+                                <div *ngIf="form.get('lastname')?.touched && form.get('lastname')?.hasError('required')" class="text-danger">
+                                    Last Name is required.
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="form-group">
+                                <label for="email">Enter Your Email:</label>
+                                <input type="email" id="email" class="form-control" formControlName="email">
+                                <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')" class="text-danger">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="text-danger">
+                                    Email is required.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Enter Your Phone:</label>
+                                <div class="input-group">
+                                    <select class="form-select" formControlName="countryCode" style="width: 5px;">
+                                        <option *ngFor="let code of countryCodes" [value]="code.value">
+                                            {{ code.label }}
+                                        </option>
+                                    </select>
+                                    <input type="text" id="phone" class="form-control" formControlName="phone" placeholder="Enter 10-digit phone number">
+                                </div>
+                                <div *ngIf="form.get('phone')?.touched">
+                                    <div *ngIf="form.get('phone')?.hasError('required')" class="text-danger">
+                                        Phone number is required.
+                                    </div>
+                                    <div *ngIf="form.get('phone')?.hasError('pattern')" class="text-danger">
+                                        Enter a valid 10-digit phone number.
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="form-group">
+                                <label for="gender">Select Your Gender:</label>
+                                <div class="d-flex">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" id="male" formControlName="gender" value="male" class="form-check-input">
+                                        <label for="male" class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" id="female" formControlName="gender" value="female" class="form-check-input">
+                                        <label for="female" class="form-check-label">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" id="other" formControlName="gender" value="other" class="form-check-input">
+                                        <label for="other" class="form-check-label">Other</label>
+                                    </div>
+                                </div>
+                                <div *ngIf="form.get('gender')?.touched && form.get('gender')?.hasError('required')" class="text-danger">
+                                    Gender is required.
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="form-group">
+                                <label for="dob">Enter Your Date of Birth:</label>
+                                <input type="date" id="dob" class="form-control" formControlName="dob">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userRole">Select Your Role:</label>
+                                <select class="form-control" formControlName="userRole">
+                                    <option value="">-- Select Role --</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="doctor">Doctor</option>
+                                    <option value="patient">Patient</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                       
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">Enter Your Password:</label>
+                                <input type="password" id="password" class="form-control" formControlName="password">
+                                <div *ngIf="form.get('password')?.touched">
+                                    <div *ngIf="form.get('password')?.hasError('required')" class="text-danger">
+                                        Password is required.
+                                    </div>
+                                    <div *ngIf="form.get('password')?.hasError('pattern')" class="text-danger">
+                                        Password must contain at least one uppercase, one lowercase, one number, and one special character.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Your Password:</label>
+                                <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword">
+                                <div *ngIf="form.get('confirmPassword')?.touched && form.hasError('passwordMismatch')" class="text-danger">
+                                    Passwords do not match.
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Select a Security Question:</label>                              
+                                <select id="secId" class="form-select w-50" formControlName="secId"> 
+                                    <option value="">Select a question</option> 
+                                    <option *ngFor="let question of securityQuestions" [value]="question.secId" 
+                      class="text-dark"> 
+                                      {{ question.securityQuestion }} 
+                                    </option> 
+                                  </select>
+                              </div>
+                              
+
+                            <div class="form-group">
+                                <label for="securityAnswer">Enter Your Answer:</label>
+                                <input type="text" id="securityAnswer" class="form-control" formControlName="securityAnswer">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Enter Your Address:</label>
+                                <textarea id="address" class="form-control" formControlName="address" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Enter Your User Name:</label>
+                                <input type="text" id="username" class="form-control" formControlName="username">
+                                <div *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')" class="text-danger">
+                                    User Name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Preview</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<!-- Bootstrap Modal for Preview -->
+<ng-template #previewModal>
+    <div class="modal fade show d-block" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Preview Your Details</h5>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modalService.dismissAll()"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>First Name:</strong> {{ previewData.firstname }}</p>
+                    <p><strong>Last Name:</strong> {{ previewData.lastname }}</p>
+                    <p><strong>Middle Name:</strong> {{ previewData.middlename }}</p>
+                    <p><strong>Email:</strong> {{ previewData.email }}</p>
+                    <p><strong>Phone:</strong> {{ previewData.phone }}</p>
+                    <p><strong>Gender:</strong> {{ previewData.gender }}</p>
+                    <p><strong>Date of Birth:</strong> {{ previewData.dob }}</p>
+                    <p><strong>Role:</strong> {{ previewData.userRole }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" (click)="modalService.dismissAll()">Edit</button>
+                    <button class="btn btn-success" (click)="submitData()">Confirm & Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

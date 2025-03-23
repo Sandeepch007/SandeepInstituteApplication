@@ -1,0 +1,17 @@
+<div *ngIf="isBrowser; else noData">
+  <ag-grid-angular
+    style="width: 100%; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="forexData"
+    [columnDefs]="columnDefs"
+    [domLayout]="'autoHeight'"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    
+  [paginationPageSizeSelector]="[5,10, 20, 50, 100]">
+  </ag-grid-angular>
+</div>
+
+<ng-template #noData>
+  <p>Loading data...</p>
+</ng-template>
